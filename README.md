@@ -19,17 +19,20 @@ Script installer otomatis untuk VPN **VLESS + XHTTP (Xray-core)** di **Debian 11
 ## Cara install
 
 ```bash
+apt update && apt install -y curl
 curl -fsSL https://raw.githubusercontent.com/Firdaus-XD/vless-xhttp-installer/main/install-vless-xhttp.sh -o install.sh
 chmod +x install.sh
-sudo ./install.sh
+bash install.sh
 ```
+
+> Penting: tampal perintah di atas **tanpa** tanda petik `'` di awal/akhir. `apt install curl` wajib dulu karena Debian minimal belum tentu punya `curl`. Kalau login sebagai `root`, `sudo` tidak diperlukan.
 
 Lalu ikuti petunjuknya: masukkan domain, path XHTTP (default `/xhttpvl`), dan nama user pertama. Selesai — script menampilkan URI VLESS lengkap.
 
 **Non-interaktif** (untuk skrip/testing):
 
 ```bash
-sudo ./install.sh --domain vpn.contoh.com --user user1 --path /xhttpvl --yes
+bash install.sh --domain vpn.contoh.com --user user1 --path /xhttpvl --yes
 ```
 
 Opsi lain: `--selfsigned` (pakai sertifikat self-signed, tanpa Let's Encrypt), `--install` (install ulang), `--menu`, `--uninstall`, `--help`.

@@ -6,6 +6,7 @@ Script installer otomatis untuk VPN **VLESS + XHTTP (Xray-core)** di **Debian 11
 
 - **Xray-core** versi stabil terbaru (dari GitHub resmi XTLS) + service systemd (auto-start saat boot)
 - **Inbound VLESS** port **443** + TLS, transport **XHTTP**
+- **Inbound kedua port 80 tanpa TLS** (HTTP, untuk keperluan khusus seperti bug host/inject) — user & UUID yang sama berlaku di kedua inbound
 - **Sertifikat TLS otomatis** via acme.sh + Let's Encrypt (standalone, port 80) — kalau gagal, otomatis fallback ke self-signed dengan peringatan jelas
 - **1 user pertama** dibuat saat install, lengkap dengan URI `vless://` siap import
 - **Menu manajemen** — tambah/hapus user, lihat daftar user + URI, cek status, restart, uninstall bersih

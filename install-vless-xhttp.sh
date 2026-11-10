@@ -281,6 +281,16 @@ build_config() {
           xhttpSettings: { path: $path, mode: "auto" }
         },
         sniffing: { enabled: true, destOverride: ["http", "tls"] }
+      }, {
+        port: 80,
+        protocol: "vless",
+        settings: { clients: ($clients[0] | map({id: .uuid, email: .name})), decryption: "none" },
+        streamSettings: {
+          network: "xhttp",
+          security: "none",
+          xhttpSettings: { path: $path, mode: "auto" }
+        },
+        sniffing: { enabled: true, destOverride: ["http", "tls"] }
       } ],
       outbounds: [ { protocol: "freedom", tag: "direct" } ]
     }' > "${XRAY_CONFIG}.tmp" \

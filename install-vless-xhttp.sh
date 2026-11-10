@@ -216,7 +216,7 @@ obtain_cert() { # $1 = domain ; $2 = "acme"|"selfsigned"
     if "${acme}" --issue -d "${domain}" --standalone --keylength ec-256 >/dev/null 2>&1; then
       "${acme}" --install-cert -d "${domain}" --ecc \
         --fullchain-file "${cert_file}" --key-file "${key_file}" \
-        --reloadcmd "systemctl restart xray" >/dev/null 2>&1 \
+        --reloadcmd "systemctl restart xray || true" >/dev/null 2>&1 \
         || { warn "Install sertifikat ke ${XRAY_CERT_DIR} gagal."; mode="selfsigned"; }
     else
       warn "Penerbitan sertifikat Let's Encrypt GAGAL (domain belum mengarah ke IP VPS ini / port 80 terhalang)."
